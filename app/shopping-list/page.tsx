@@ -1,7 +1,6 @@
 'use client'
 
 import ShoppingList from "@/components/ShoppingList/ShoppingList";
-import ShoppingListInput from "@/components/ShoppingList/ShoppingListInput";
 
 export default function Page() {
     return (

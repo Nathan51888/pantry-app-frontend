@@ -18,6 +18,7 @@ const ShoppingList = (props: Props) => {
     const onItemSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
         const newItem: ShoppingListItemGet = {
+            id: uuidv4().toString(),
             title: inputTitle,
             isCompleted: false,
         }
@@ -26,12 +27,23 @@ const ShoppingList = (props: Props) => {
         console.log("added item: " + newItem.title)
     }
 
+    const onItemDelete = (e: any) => {
+        e.preventDefault();
+        const updatedItems = items?.filter((item) => {
+            return item.id !== e.target[0].value
+        })
+        setItems(updatedItems);
+        console.log("deleted item: " + e.target[0].value)
+    }
+
     const example: ShoppingListItemGet[] = [
         {
+            id: "1",
             title: "cheese",
             isCompleted: true,
         },
         {
+            id: "2",
             title: "beef",
             isCompleted: false,
         }
@@ -47,7 +59,7 @@ const ShoppingList = (props: Props) => {
             <ShoppingListInput inputTitle={inputTitle} handleInputChange={handleInputChange} onItemSubmit={onItemSubmit}></ShoppingListInput>
             {
                 items ? items?.map((item) => {
-                    return <ShoppingListItem key={uuidv4()} item={item}></ShoppingListItem>
+                    return <ShoppingListItem key={uuidv4()} item={item} onItemDelete={onItemDelete}></ShoppingListItem>
                 }) : (
                     <p>No items</p>
                 )
