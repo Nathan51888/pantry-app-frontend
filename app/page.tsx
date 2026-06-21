@@ -2,10 +2,13 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <div>
-            <h1>Home</h1>
-            <p>This is the home page</p>
-            <Link href="/shopping-list">Shopping List</Link>
-        </div>
+        <>
+            <main className="mx-auto w-5xl bg-white">
+                <div className="bg-white">
+                    <h1>Home</h1>
+                    <p>This is the home page</p>
+                </div>
+            </main>
+        </>
     );
 }
