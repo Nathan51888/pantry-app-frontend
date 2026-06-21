@@ -6,7 +6,7 @@ import ShoppingListInput from "@/components/ShoppingList/ShoppingListInput";
 export default function Page() {
     return (
         <div className="shadow rounded-lg w-6xl h-full p-6 m-3 mx-auto">
-            <h1>ShoppingList</h1>
+            <h1>ShoppingListPage</h1>
             <ShoppingList></ShoppingList>
         </div >
     )

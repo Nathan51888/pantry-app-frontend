@@ -46,9 +46,13 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/icon?family=Material+Icons"
                 />
             </head>
-            <body className="min-h-full flex flex-col">
-                <Navbar></Navbar>
-                {children}
+            <body className="min-h-screen max-h-screen grid auto-rows-max">
+                <nav className="h-fit">
+                    <Navbar></Navbar>
+                </nav>
+                <main className="min-h-full">
+                    {children}
+                </main>
             </body>
         </html>
     );
