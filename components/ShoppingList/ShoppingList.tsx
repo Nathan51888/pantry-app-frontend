@@ -1,65 +1,35 @@
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
-import ShoppingListInput from "./ShoppingListInput";
+"use client"
+
+import { use, useEffect, useState } from "react";
+import ShoppingListAddInput from "./ShoppingListAddInput";
 import ShoppingListItem from "./ShoppingListItem"
 import { ShoppingListItemGet } from "@/models/ShoppingList";
-import { v4 as uuidv4 } from "uuid";
 
-type Props = {}
+type Props = {
+    data: Promise<ShoppingListItemGet[] | null>;
+}
 
-const ShoppingList = (props: Props) => {
-    const [inputTitle, setInputTitle] = useState<string>("");
-    const [items, setItems] = useState<ShoppingListItemGet[] | null>();
-
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputTitle(e.target.value);
-        console.log(e.target.value)
-    }
-
-    const onItemSubmit = (e: SyntheticEvent) => {
-        e.preventDefault();
-        const newItem: ShoppingListItemGet = {
-            id: uuidv4().toString(),
-            title: inputTitle,
-            isCompleted: false,
-        }
-        const updatedItems = [...items!, newItem!]
-        setItems(updatedItems)
-        console.log("added item: " + newItem.title)
-    }
-
-    const onItemDelete = (e: any) => {
-        e.preventDefault();
-        const updatedItems = items?.filter((item) => {
-            return item.id !== e.target[0].value
-        })
-        setItems(updatedItems);
-        console.log("deleted item: " + e.target[0].value)
-    }
-
-    const example: ShoppingListItemGet[] = [
-        {
-            id: "1",
-            title: "cheese",
-            isCompleted: true,
-        },
-        {
-            id: "2",
-            title: "beef",
-            isCompleted: false,
-        }
-    ]
+const ShoppingList = ({ data }: Props) => {
+    const fetchedItems = use(data);
+    const [itemList, setItemList] = useState<ShoppingListItemGet[] | null>();
 
     useEffect(() => {
-        setItems(example)
-    }, [])
+        setItemList(fetchedItems);
+        console.log("fetched data [fetchedItems]: ", fetchedItems);
+        console.log("itemListState [fetchedItems]: ", itemList);
+    }, [fetchedItems])
+
+    useEffect(() => {
+        console.log("itemListState updated [itemList]", itemList)
+    }, [itemList])
 
     return (
         <div className="bg-gray-300 shadow p-6 mx-auto w-fit flex flex-col gap-2 items-center">
             ShoppingListComponent
-            <ShoppingListInput inputTitle={inputTitle} handleInputChange={handleInputChange} onItemSubmit={onItemSubmit}></ShoppingListInput>
+            <ShoppingListAddInput></ShoppingListAddInput>
             {
-                items ? items?.map((item) => {
-                    return <ShoppingListItem key={uuidv4()} item={item} onItemDelete={onItemDelete}></ShoppingListItem>
+                itemList ? itemList?.map((item) => {
+                    return <ShoppingListItem key={item.id} item={item} ></ShoppingListItem>
                 }) : (
                     <p>No items</p>
                 )
