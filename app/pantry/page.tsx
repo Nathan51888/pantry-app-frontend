@@ -1,14 +1,14 @@
-import PantryList from "@/components/Pantry/PantryList"
+import PantryList from "@/components/Pantry/PantryList";
 
-type Props = {}
+type Props = {};
 
 const page = (props: Props) => {
-    return (
-        <div className="shadow rounded-lg w-6xl h-full p-6 mx-auto">
-            <h1>Pantry Page</h1>
-            <PantryList></PantryList>
-        </div>
-    )
-}
+  return (
+    <div className="mx-auto h-full w-6xl rounded-lg p-6 shadow">
+      <h1>Pantry Page</h1>
+      <PantryList></PantryList>
+    </div>
+  );
+};
 
-export default page
+export default page;

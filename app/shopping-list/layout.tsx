@@ -1,14 +1,12 @@
 export default function ShoppingLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    return (
-        <>
-            <div className="grow bg-white h-full mx-auto px-64">
-                <h1 className="font-bold">Shopping Layout</h1>
-                {children}
-            </div>
-        </>
-    )
+  return (
+    <div className="m-3 rounded-3xl border-2 border-black bg-white px-64">
+      <h1 className="font-bold">Shopping Layout</h1>
+      {children}
+    </div>
+  );
 }

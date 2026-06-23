@@ -1,15 +1,15 @@
 import { PantryItemGet } from "@/models/Pantry";
 
 interface Props {
-    item: PantryItemGet;
+  item: PantryItemGet;
 }
 
 const PantryListItem = ({ item }: Props) => {
-    return (
-        <div className="shadow rounded-lg flex w-fit px-6">
-            <p>{item.name}</p>
-        </div>
-    )
-}
+  return (
+    <div className="flex w-fit rounded-lg px-6 shadow">
+      <p>{item.name}</p>
+    </div>
+  );
+};
 
-export default PantryListItem
+export default PantryListItem;

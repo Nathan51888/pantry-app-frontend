@@ -1,5 +1,5 @@
 export type ShoppingListItemGet = {
-    id: string;
-    title: string;
-    isCompleted: boolean;
-}
+  id: string;
+  title: string;
+  isCompleted: boolean;
+};
