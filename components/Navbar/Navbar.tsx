@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "@mui/material/Link"
+import Link from "next/link"
 
 const Navbar = () => {
     return (

@@ -1,6 +1,5 @@
 import { updateShoppingListCompletedAction } from "@/actions/shoppingList";
 import { ShoppingListItemGet } from "@/models/ShoppingList";
-import { Checkbox } from "@mui/material";
 import { ChangeEvent } from "react";
 
 interface Props {
@@ -16,7 +15,7 @@ const ShoppingListItemCheckbox = ({ item }: Props) => {
         }
     }
     return (
-        <Checkbox name="completed" defaultChecked={item.isCompleted} onChange={handleToggle}></Checkbox>
+        <input type="checkbox" name="completed" defaultChecked={item.isCompleted} onChange={handleToggle}></input>
     )
 }
 

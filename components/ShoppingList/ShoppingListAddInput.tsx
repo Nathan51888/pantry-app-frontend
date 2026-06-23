@@ -1,8 +1,6 @@
 'use client'
 
 import { createShoppingListAction } from "@/actions/shoppingList";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import { useActionState } from "react"
 
 interface Props {
@@ -18,12 +16,10 @@ const ShoppingListAddInput = ({ }: Props) => {
                 className="mx-auto w-fit flex gap-3"
                 action={formAction}
             >
-                <TextField
-                    name="title"
-                    placeholder="item"
-                ></TextField>
-                <Button variant="contained" type="submit" disabled={isPending}>Add</Button>
-                {isPending ? "Adding..." : `Added Item: "${state.data?.title}"`}
+                <input name="title" placeholder="item" />
+                <button type="submit" disabled={isPending}>Add</button>
+                {isPending ? "Adding..." : ""}
+                {`Added Item: "${state.data?.title}"`}
             </form>
         </div>
     )

@@ -2,11 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// fonts
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 import Navbar from "@/components/Navbar/Navbar";
 
 const geistSans = Geist({
@@ -35,16 +30,6 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
         >
             <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-                />
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-                />
             </head>
             <body className="min-h-screen max-h-screen grid auto-rows-max">
                 <nav className="h-fit">
